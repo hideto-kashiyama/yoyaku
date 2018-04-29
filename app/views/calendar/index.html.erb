@@ -1,0 +1,32 @@
+<div>
+  <%= link_to "ログアウト", destroy_user_session_path, method: "delete" %>
+  
+</div>
+
+<% if !@eventup.nil? %>
+  <div id="error_explanation">
+     
+    <ul>
+     <% @eventup.errors.full_messages.each do |msg| %>
+      <li><%= msg %><i class="fa fa-times"></i></li>
+     <% end %>
+    </ul>
+    
+  </div>
+  
+<% end %>
+
+
+
+     
+    <h1>予約サイト</h1>
+   
+    <div id="calendar"></div>
+
+<%= form_tag calendar_create_path, id: "reserve" do%>
+
+   <%= hidden_field_tag :start %>
+   <%= hidden_field_tag :end %>
+
+<% end %>
+
