@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+
 //= require_tree .
 // @ app/assets/javascripts/application.js
 //= require moment
@@ -30,5 +30,12 @@ $(function() {
       setTimeout(function(){
           $("#error_explanation").hide(); 
       },3000);
+      
+      
+      if (!$("#admin").text()) {
+       
+        $("#adming").hide();
+        
+      }
       
 });

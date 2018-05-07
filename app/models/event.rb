@@ -13,12 +13,21 @@ class Event < ActiveRecord::Base
         events=Event.where("start <= ?", self.start).where("end >= ?", self.end)
         
         Rails.logger.debug(self.start.hour)
-        if events.count > 0
-            
-            errors.add(:start, "：既にご予約済のため予約できません。")
-           
-        end 
-       
+        
+        if self.start < Time.now
+        
+          errors.add(:start, "：過去の日付です。")
+        
+         else
+        
+                if events.count > 0
+                
+                   errors.add(:start, "：既にご予約済のため予約できません。")
+               
+                 end 
+         
+         end 
+        
         Rails.logger.debug(self.start.hour)
         s = "#{self.start.hour}#{"%02d" % self.start.min}".to_i
         Rails.logger.debug(s)
@@ -27,6 +36,8 @@ class Event < ActiveRecord::Base
            
         end
         
+        
+          
     end
   
 end

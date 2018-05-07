@@ -1,14 +1,21 @@
 Rails.application.routes.draw do
   
-  devise_for :users
-  root to: 'calendar#index'
+   devise_for :users
+   root to: 'calendar#index'
+ #root to: 'calendar#admin_index'
+  
+  
   
   get 'calendar/index'
+  get 'calendar/admin_index'
   
   get 'events', to: 'events#events'
+  get 'users', to: 'users#users'
   
   post 'calendar/create'
   get  'calendar/create', to: "calendar#index"
+  get  'calendar/create', to: "calendar#admin_index"
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,16 +1,4 @@
-<div id="adming">
-
-　<a href="/calendar/admin_index">管理者</a>
-　　　　
-</div>
-
-<div id="admin"><%= current_user.admin_flag %></div>
-
-
-
-
 <div>
-    
   <%= link_to "ログアウト", destroy_user_session_path, method: "delete" %>
   
 </div>
@@ -29,17 +17,25 @@
 <% end %>
 
 
+ <div id="usi">user_id:<%= current_user.id %></div>
+ 
+ <style type="text/css">
  
  
+ </style>
 
+ 
     <h1>予約サイト</h1>
    
-    <div id="calendar"></div>
+    <div id="admin_calendar"></div>
     
+    
+
 <%= form_tag calendar_create_path, id: "reserve" do%>
 
    <%= hidden_field_tag :start %>
    <%= hidden_field_tag :end %>
-　　
+　　<%= hidden_field_tag :id %>
+
 <% end %>
 

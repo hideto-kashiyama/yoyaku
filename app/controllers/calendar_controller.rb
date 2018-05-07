@@ -13,7 +13,7 @@ class CalendarController < ApplicationController
   
   def create
     
-      @eventup = Event.new(title: "ご予約済み", user_id: current_user.id, start: params[:start], end: params[:end])
+      @eventup = Event.new(title: current_user.name, user_id: current_user.id, start: params[:start], end: params[:end])
       
       if @eventup.valid?
         @eventup.save
@@ -25,9 +25,6 @@ class CalendarController < ApplicationController
       end
     
   end
-  
-  
-  
   
   
 end

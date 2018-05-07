@@ -2,7 +2,7 @@
      
      var $selectable = true;
        
-      $("#calendar").fullCalendar({
+      $("#admin_calendar").fullCalendar({
       
     　 　defaultView: 'agendaWeek',  
     　   //defaultView: 'month',  
@@ -12,7 +12,6 @@
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
           },
-          
             //sunday: false,
             navLinks: true,
             selectable: true,
@@ -35,27 +34,13 @@
           if (!$selectable){
               return;
           }
-           
+           console.log(new Date());
          
                //var dObj = new Date(start);//日付取得
                //var wDay = dObj.getDay();//曜日取得
                var wDay = start.day();//曜日取得
                
-               console.log(new Date());
-               console.log(moment(start).format("YYYY/MM/DD HH:mm" )) ;
-              
-　　　　　　　　　   if ( moment(start) < new Date() ) {
-　　　　　　　　　    　 
-　　　　　　　　　    　    alert("過去の日付です。");
-　　　　　　　　　    
-    　　　　　　        　　　     setTimeout(function() {
-                    		location.reload();
-                        	},1);
-                	
-　　　　　　　　　        return;
-　　　　　　　　　    
-　　　　　　　　　    　}
-　　　　　　　　
+               console.log(new Date(start));
 　　　　　　　　　
 　　　　　　　　　if ( wDay==0 ) {//日曜日
 　　　　　　　　　    console.log(wDay);
@@ -64,7 +49,6 @@
                 	location.reload();
                   },1);
 　　　　　　　　　 return;
-　　　　　　　　　 
 　　　　　　　　　 
 　　　　　　　　　} else if ( wDay==4 ) { //木曜日
 　　　　　　　　　    console.log(wDay);
@@ -147,36 +131,31 @@
             
        eventClick: function(event)  {
            
-            if (!$selectable){
+         if (!$selectable){
               return;
             }
-       
-                 console.log(new Date());  
-                 console.log(event.start);
+            
+            console.log(event.title)
+  
+         alert(event.user_id+"："+event.title);
+        
+         console.log(new Date());  
+         console.log(event.start);
           
                  console.log(moment(event.start).format("YYYY/MM/DD HH:mm" ));
                  console.log(moment(event.end).format("YYYY/MM/DD HH:mm" ));
-           
-         　if ( moment(event.start) < new Date() ) {
-　　　　　　　　　    　 
-　　　　　　　　　    　  alert("過去の日付です。");
-　　　　　　　　　    
-    　　　　　　        　　　     setTimeout(function() {
-                    		location.reload();
-                        	},1);
-                	
-　　　　　　　　　        exit; 
-　　　　　　　　　        
-            } 
+                 
                 
-                  $('#start').val(moment(event.start).format("YYYY/MM/DD HH:mm")); 
+               /*   $('#start').val(moment(event.start).format("YYYY/MM/DD HH:mm")); 
                   
                   $('#end').val(moment(event.end).format("YYYY/MM/DD HH:mm")); 
                  
                     //viewの値をサーバーへ送信する
-                  $("#reserve").submit(); 
+                  $("#reserve").submit(); */
                   
+             
             },
+            
             
         viewRender: function(view, element){
             //月表示では予約入力不可
