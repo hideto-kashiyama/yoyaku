@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-
+//= require jquery.cookie
 //= require_tree .
+
 // @ app/assets/javascripts/application.js
 //= require moment
 //= require fullcalendar
@@ -37,5 +38,7 @@ $(function() {
         $("#adming").hide();
         
       }
+      
+     
       
 });

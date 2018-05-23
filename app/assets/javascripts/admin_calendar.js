@@ -1,3 +1,5 @@
+
+
  $(function () {
      
      var $selectable = true;
@@ -97,35 +99,29 @@
 　　　　　　　　　        return;
                     }
                     
-　　　　　　　　　}　　　　
-　　　　　　　　　
-
-                  console.log(moment(start).format("YYYY/MM/DD HH:mm" )) ;
-                  console.log(moment(end).format("YYYY/MM/DD HH:mm")) ;
-               if(window.confirm(moment(start).format("YYYY/MM/DD HH:mm")+'から予約をお取りしてよろしいですか？')){
+　　　　　　　　　}
+　　　　　
+　　　　　//cookieを書きこむ
+　　　　　 　//$.cookie("st_cookie", moment(start).format("YYYY/MM/DD HH:mm"), {path:'/'});
+　　　         // console.log($.cookie( 'st_cookie' ));
+　　　          
+　　　      // $.cookie("en_cookie", moment(end).format("YYYY/MM/DD HH:mm"), {path:'/'});  
+　　　       
+　　　　　　 location.href = $("#url").val()+"?st="+moment(start).format("YYYY-MM-DD-HH:mm")+"&en="+moment(end).format("YYYY-MM-DD-HH:mm");
+　　　　　　
+　　　　　　　
+         
+              
                    //jquery からview へ値を渡す。
-                  $('#start').val(moment(start).format("YYYY/MM/DD HH:mm")); 
-                  console.log(moment(start).format("YYYY/MM/DD HH:mm" )) ;
-                  $('#end').val(moment(end).format("YYYY/MM/DD HH:mm")); 
-                  console.log(moment(end).format("YYYY/MM/DD HH:mm")) ;
-                    //viewの値をサーバーへ送信する
-                  $("#reserve").submit(); 
+                 // $('#start').val(moment(start).format("YYYY/MM/DD HH:mm")); 
                   
-                } else {  //キャンセルなら
+                  //$('#end').val(moment(end).format("YYYY/MM/DD HH:mm")); 
                 
-                //alert("キャンセル")
-                
-                    setTimeout(function() {
-                		location.reload();
-                	},1);
-            	
-                //$('#calendar').fullCalendar('removeEvents');
-            	//$('#calendar').fullCalendar('addEventSource', calEvent);
-                  //$('#fullcalendar').fullCalendar( 'refetchEvents' );
-                  //$('#calendar').fullCalendar('addEventSource', calEvent);
-               　//　$('#calendar').fullCalendar('rendar');
-                  //$('#fullcalendar').fullCalendar( 'refresh' );  
-                }
+                  
+                    //viewの値をサーバーへ送信する
+                 // $("#reserve_admin").submit(); 
+                  
+              
                 
             },
             
@@ -136,9 +132,23 @@
             }
             
             console.log(event.title)
-  
-         alert(event.user_id+"："+event.title);
-        
+      
+         //alert(event.user_id+"："+event.title);
+         if(window.confirm(event.user_id+"："+event.title+ " さらに詳細なユーザー情報を表示しますか？")) {
+         
+         /*
+                < $('#usrid').val(event.user_id);
+                 
+                 $('#usershow').on('click',function(){
+                        //alert("ユーザー情報を表示します");
+                  });
+                 
+                 $('#usershow').trigger("click");
+        */
+                 location.href = $("#url").val() + "/" + event.user_id;
+         
+         }
+        　
          console.log(new Date());  
          console.log(event.start);
           

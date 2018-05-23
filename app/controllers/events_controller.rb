@@ -19,4 +19,12 @@ class EventsController < ApplicationController
     
   end
   
+  def events_send
+    
+    
+    
+    
+  end
+  
+  
 end

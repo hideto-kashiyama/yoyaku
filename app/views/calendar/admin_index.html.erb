@@ -1,7 +1,21 @@
 <div>
+    
   <%= link_to "ログアウト", destroy_user_session_path, method: "delete" %>
   
 </div>
+
+
+
+<div>
+    
+　　<a href="<%= users_path %>">ユーザー一覧</a>
+　　
+</div>
+
+    <input type="hidden" id="url" value="<%=users_path%>" />
+    <input type="hidden" id="user_id" value="" />
+  
+    
 
 <% if !@eventup.nil? %>
   <div id="error_explanation">
@@ -17,25 +31,21 @@
 <% end %>
 
 
- <div id="usi">user_id:<%= current_user.id %></div>
+ <div id="usi">管理者:<%= current_user.id %></div>
  
  <style type="text/css">
- 
  
  </style>
 
  
     <h1>予約サイト</h1>
-   
-    <div id="admin_calendar"></div>
     
-    
+<div id="admin_calendar"></div>
 
-<%= form_tag calendar_create_path, id: "reserve" do%>
+<%= form_tag calendar_create_admin_path, id: "reserve_admin" do%>
 
    <%= hidden_field_tag :start %>
    <%= hidden_field_tag :end %>
-　　<%= hidden_field_tag :id %>
-
+  
 <% end %>
 

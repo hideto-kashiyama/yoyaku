@@ -1,0 +1,87 @@
+
+<!--<script>
+
+      // DOMの準備ができたら呼ばれる。
+$(function() {
+    //読み込み時保存したcookie読み込む
+    　  (window.onload = function() {
+  　      console.log( $.cookie( 'st_cookie' ));
+  　    $('#st').val( $.cookie( 'st_cookie' ));
+  　    $('#en').val( $.cookie( 'en_cookie' ));
+    
+　　  })();
+　　  
+　　  
+});
+
+</script>-->
+
+<script>
+
+$(function(){
+  $(".reserve_btn").on("click", function(){
+  
+  var uid = $(this).data("uid");
+  //alert(uid);
+  console.log(uid);
+  $("#uid").val(uid);
+  
+  });
+})
+
+</script>
+
+
+<h1>ユーザー一覧　</h1>
+
+
+
+<input type="text" id="st" value="<%= params[:st] %>">
+<input type="text" id="en" value="<%= params[:en] %>">
+
+<form method="get" action="/users">
+    
+       <input type="text" value="氏名を入力してください" name="fstr" /> 
+       <input type="submit" value="検索" />
+       <input type="text" value="<%= params[:st] %>" name="st"/>
+       <input type="text" value="<%= params[:en] %>" name="en"/>
+       
+</form> 
+
+<form method="post" action="/users" />
+ 
+  <input type="text" value="<%= params[:st] %>" name="st" />
+  <input type="text" value="<%= params[:en] %>" name="en" />
+  <input type="text" id="uid" value="" name="usrid" />
+
+<table id="rbtn">
+  <tr>
+    <th>
+      ユーザID
+    </th>
+    <th>
+      名前
+    </th>
+    <th></th>
+  </tr>
+
+<% @users.each do |usr| %>
+ 
+  <tr>
+    <td>
+     <%= usr.id %>
+    </td>
+    <td>
+     <%= usr.name %>
+    </td>
+    <td>
+      
+     <input type="submit" value="このユーザーで予約する" class="reserve_btn" data-uid="<%= usr.id %>" />
+     
+    </td>
+  </tr>
+ 
+<% end %>
+</table>
+
+</form>

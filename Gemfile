@@ -46,8 +46,11 @@ group :development do
 end
 
 gem 'fullcalendar-rails'
+
 gem 'momentjs-rails'
 
 gem 'devise', '3.4.1'
 
 gem "font-awesome-rails"
+
+

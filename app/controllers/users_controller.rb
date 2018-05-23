@@ -1,19 +1,29 @@
 class UsersController < ApplicationController
-
-def users
-    @user = User.all
+  
+  def index
     
-    respond_to do |format|
-      json_param = [:id, :name, :email]
+      fstr = params[:fstr]
       
-      format.json {
-        render json:
-        @user.to_json(
-          only: json_param
-        )
-      }
-   
-    end
-end
-
+      if fstr.present? 
+        
+          @users= User.where("name like '%" + fstr + "%'")
+          
+      else
+        
+          @users=User.all
+      
+      end
+      
+  end
+  
+  def show
+    
+      @user = User.find(params[:id])
+    
+    
+  end
+  
+  
+  
+  
 end

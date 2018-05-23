@@ -1,16 +1,17 @@
-<div id="adming">
+<% if current_user.admin_flag %>
 
-　<a href="/calendar/admin_index">管理者</a>
-　　　　
-</div>
+    <div id="adming">
+    
+    　<a href="/calendar/admin_index">管理者</a>
+    　　　　
+    </div>
+
+<% end %>
 
 <div id="admin"><%= current_user.admin_flag %></div>
 
-
-
-
 <div>
-    
+  
   <%= link_to "ログアウト", destroy_user_session_path, method: "delete" %>
   
 </div>
@@ -28,8 +29,6 @@
   
 <% end %>
 
-
- 
  
 
     <h1>予約サイト</h1>
@@ -42,4 +41,3 @@
    <%= hidden_field_tag :end %>
 　　
 <% end %>
-
