@@ -48,8 +48,7 @@ $(function(){
        
 </form> 
 
-<form method="post" action="/users" />
- 
+<%= form_tag calendar_create_admin_path do %>
   <input type="text" value="<%= params[:st] %>" name="st" />
   <input type="text" value="<%= params[:en] %>" name="en" />
   <input type="text" id="uid" value="" name="usrid" />
@@ -84,4 +83,4 @@ $(function(){
 <% end %>
 </table>
 
-</form>
+<% end %>

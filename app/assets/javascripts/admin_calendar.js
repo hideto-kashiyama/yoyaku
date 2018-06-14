@@ -64,6 +64,18 @@
 　　　　　　　　　    
 　　　　　　　　　}
 　　　　　　　　　
+　　　　　　　　　  if ( moment(start) < new Date() ) {
+　　　　　　　　　    　 
+　　　　　　　　　    　    alert("過去の日付です。");
+　　　　　　　　　    
+    　　　　　　        　　　     setTimeout(function() {
+                    		location.reload();
+                        	},1);
+                	
+　　　　　　　　　        return;
+　　　　　　　　　    
+　　　　　　　　　    　}
+　　　　　　　　　
 　　　　　　　　　if (wDay==6) {　//土曜日の12時以降
 　　　　　　　　　    console.log(wDay);
 　　　　　　　　　    var tm =moment(start).format("H");

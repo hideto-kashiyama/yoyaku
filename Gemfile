@@ -43,7 +43,22 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  
+  gem 'capistrano',         require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-passenger', require: false
+  gem 'capistrano-rbenv',   require: false
+  
+  
 end
+
+group :production do
+  gem 'mysql2', '< 0.5'
+  gem 'therubyracer', platforms: :ruby
+end
+
+gem "config"
 
 gem 'fullcalendar-rails'
 
@@ -53,4 +68,9 @@ gem 'devise', '3.4.1'
 
 gem "font-awesome-rails"
 
+
+
+ 
+   
+   
 

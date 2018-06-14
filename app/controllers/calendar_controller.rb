@@ -27,12 +27,15 @@ class CalendarController < ApplicationController
   end
   
   def create_admin
-    "2018-05-17-12:00"
+    
     #日付を文字列にする  Time.strftime
     #文字列を日付にする  Time.strptime
+   Time.strptime("2018-05-17-12:00 +09:00", "%Y-%m-%d-%H:%M %z")
+   
+  
    
     user = User.find(params[:usrid])
-      @eventup_admin = Event.new(title: user.name, user_id: user.id, start: Time.strptime(params[:st], "%Y-%m-%dT%H:%M"), end: Time.strptime(params[:en], "%Y-%m-%dT%H:%M"))
+      @eventup_admin = Event.new(title: user.name, user_id: user.id, start: Time.strptime(params[:st] + " +09:00", "%Y-%m-%d-%H:%M %z"), end: Time.strptime(params[:en]+" +09:00", "%Y-%m-%d-%H:%M %z"))
       Rails.logger.debug(22222)
       if @eventup_admin.valid?
         @eventup_admin.save
@@ -40,7 +43,8 @@ class CalendarController < ApplicationController
         redirect_to action: 'admin_index'
       else
         Rails.logger.debug(22222)
-        render action: 'index'
+        Rails.logger.debug(@eventup_admin.errors.full_messages)
+        render action: 'admin_index'
       end
     
   end
