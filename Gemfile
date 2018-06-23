@@ -49,7 +49,9 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-passenger', require: false
   gem 'capistrano-rbenv',   require: false
+ gem 'sqlite3'
   
+  gem 'seed_dump'
   
 end
 
